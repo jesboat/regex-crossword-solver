@@ -1,0 +1,30 @@
+
+
+Group: Demos
+
+PuzzleResult(puzzle=RectangularPuzzle(id='9ddc357b-c925-4d47-8889-4b0f10ee46de',
+                                      name='The first example in the overview',
+                                      patternsX=[('A.', None), ('CY|DZ', None)],
+                                      patternsY=[('[AB]C', None), ('X[YZ]', None)]),
+             solution=SolvedPuzzle(model={'c_1_0': '88',
+                                          'c_0_1': '67',
+                                          'c_1_1': '89',
+                                          'c_0_0': '65'},
+                                   cell_ords={(0, 0): 65, (1, 0): 88, (0, 1): 67, (1, 1): 89},
+                                   cell_chars={(0, 0): 'A', (1, 0): 'X', (0, 1): 'C', (1, 1): 'Y'},
+                                   z3_time=0.002933979034423828,
+                                   z3_input=['Or(c_0_0 == 65)',
+                                             'Or(And(Or(c_0_1 == 67), Or(c_1_1 == 89)),\n'
+                                             '   And(Or(c_0_1 == 68), Or(c_1_1 == 90)))',
+                                             'And(Or(c_0_0 == 65, c_0_0 == 66), Or(c_0_1 == 67))',
+                                             'And(Or(c_1_0 == 88), Or(c_1_1 == 89, c_1_1 == 90))'],
+                                   unique=True,
+                                   alt_solution=None),
+             verified=True,
+             verification=[('A.', 'AX', True),
+                           ('CY|DZ', 'CY', True),
+                           ('[AB]C', 'AC', True),
+                           ('X[YZ]', 'XY', True)])
+
+
+Summary: solved 1, failed to solve 0, total 1 puzzles. Wall time: 0.013467 seconds

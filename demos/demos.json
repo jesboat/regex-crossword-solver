@@ -1,0 +1,21 @@
+[
+  {
+    "id": "demos",
+    "name": "Demos",
+    "descr": "Demonstrations of the solver for expository purposes",
+    "puzzles": [
+      {
+        "id": "9ddc357b-c925-4d47-8889-4b0f10ee46de",
+        "name": "The first example in the overview",
+        "patternsX": [
+          ["A."],
+          ["CY|DZ"]
+        ],
+        "patternsY": [
+          ["[AB]C"],
+          ["X[YZ]"]
+        ]
+      }
+    ]
+  }
+]

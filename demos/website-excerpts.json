@@ -1,0 +1,139 @@
+[
+  {
+    "id": "tutorial",
+    "date": "2013-04-13T20:11:00.000Z",
+    "name": "Tutorial",
+    "descr": "A step by step tutorial, teaching you the different symbols and regex patterns.",
+    "achievement_id": "babysteps",
+    "puzzles": [
+      {
+        "id": "272901bb-0855-4157-9b45-272935da8c93",
+        "name": "The OR symbol",
+        "patternsX": [
+          [
+            "A|B"
+          ]
+        ],
+        "patternsY": [
+          [
+            "A|Z"
+          ]
+        ]
+      },
+      {
+        "id": "6915fafc-3323-484d-b801-5daac73ddb56",
+        "name": "A Range of characters",
+        "patternsX": [
+          [
+            "[ABC]"
+          ]
+        ],
+        "patternsY": [
+          [
+            "[BDF]"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beginner",
+    "date": "2013-04-13T21:11:00.000Z",
+    "name": "Beginner",
+    "descr": "Cut your teeth on an easy set of crosswords, learning the basics of regular expressions.",
+    "achievement_id": "newbie",
+    "puzzles": [
+      {
+        "id": "27725dbd-2c90-44ef-8a2e-53f54e7a2590",
+        "name": "Naughty",
+        "patternsX": [
+          [
+            "(A|B|C)\\1"
+          ],
+          [
+            "(AB|OE|SK)"
+          ]
+        ],
+        "patternsY": [
+          [
+            ".*M?O.*"
+          ],
+          [
+            "(AN|FE|BE)"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "doublecross",
+    "date": "2013-05-28T20:11:00.000Z",
+    "name": "Double Cross",
+    "descr": "Don't get cross-eyed, the clues are coming from all directions!",
+    "achievement_id": "cut",
+    "puzzles": [
+      {
+        "id": "f0f06b00-ec0a-4572-935d-7459e2a13064",
+        "name": "Telekinesis",
+        "patternsX": [
+          [
+            "[D-HJ-M]",
+            "[^F-KM-Z]"
+          ],
+          [
+            "[^A-RU-Z]",
+            "[A-KS-V]"
+          ]
+        ],
+        "patternsY": [
+          [
+            "[A-GN-Z]+",
+            "[^A-DI-S]+"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hexagonal",
+    "date": "2015-05-31T19:59:15.000Z",
+    "name": "Hexagonal",
+    "descr": "Dive into the honeycomb like a busy bee and become a true beekeeper.",
+    "achievement_id": "buzzer",
+    "image": "https://regexcrossword.com/img/challenges/hexagonal.png",
+    "puzzles": [
+      {
+        "hexagonal": true,
+        "id": "3d870dd4-9c37-4e82-bbce-033d38acf36f",
+        "name": "Buzz buzz",
+        "patternsX": [
+          [
+            "[HELP]*(Y|QU|I)?"
+          ],
+          [
+            "(VE|IL?|\\sS)*[DIES]?"
+          ]
+        ],
+        "patternsY": [
+          [
+            "[HAIR]*(D|O)*"
+          ],
+          [
+            "(\\W|\\w)?[CLVST3R]*"
+          ],
+          [
+            "[HAV3N]?[REA]*"
+          ]
+        ],
+        "patternsZ": [
+          [
+            "[EVA]?[MASONIC\\s]?"
+          ],
+          [
+            "[STARV3]*(O|H)?"
+          ]
+        ]
+      }
+    ]
+  }
+]

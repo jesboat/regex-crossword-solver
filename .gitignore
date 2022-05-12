@@ -1,0 +1,7 @@
+/.pyre
+/venv
+/.ipynb_checkpoints
+__pycache__/
+*.hi
+*.o
+.DS_Store
