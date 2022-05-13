@@ -519,6 +519,58 @@ class RegexSymbolifier:
     def __init__(self) -> None:
         self._decoded_table = {}
 
+    @staticmethod
+    @functools.lru_cache()
+    def _get_haskell_runner() -> Callable[[str], str]:
+        project_dir: pathlib.Path = pathlib.Path(sys.argv[0]).resolve().parent.parent
+
+        # Check if stack is available
+        proc = subprocess.run(
+            args=['sh', '-c', 'command -v stack'],
+            stdout=subprocess.PIPE,
+        )
+
+        if proc.returncode == 0 and proc.stdout:
+            return(lambda haskell_input:
+                subprocess.run(
+                    args=[
+                        'stack', 'exec',
+                        'regex-crossword-solver-tool',
+                        'generate-constraints',
+                    ],
+                    cwd=project_dir,
+                    input=haskell_input,
+                    stdout=subprocess.PIPE,
+                    encoding='utf-8',
+                    check=True,
+                ).stdout
+            )
+
+        # No stack. Can we use runhaskell?
+        proc = subprocess.run(
+            args=['sh', '-c', 'command -v runhaskell'],
+            stdout=subprocess.PIPE,
+        )
+
+        if proc.returncode == 0 and proc.stdout:
+            return(lambda haskell_input:
+                subprocess.run(
+                    args=[
+                        'runhaskell',
+                        project_dir / 'src' / 'Regex.hs',
+                        'generate-constraints',
+                    ],
+                    stdout=subprocess.PIPE,
+                    encoding='utf-8',
+                    check=True,
+                    input=haskell_input,
+                ).stdout
+            )
+
+        # No way to run Haskell :(
+        raise InternalError(
+                "Unable to run Haskell code: neither 'stack' nor 'runhaskell' is installed")
+
     def process(self, queries: Iterable[Tuple[str, int]]) -> None:
         pending_queries = list(set(q for q in queries if q not in self._decoded_table))
 
@@ -528,19 +580,7 @@ class RegexSymbolifier:
             check("\n" not in pat, lambda: InternalError("implementation limit"))
             haskell_input += "%d %s\n" % (strlen, pat)
 
-        proc = subprocess.run(
-            args=[
-                'runhaskell',
-                pathlib.Path(sys.argv[0]).resolve().parent / 'Regex.hs',
-                'generate-constraints',
-            ],
-            stdout=subprocess.PIPE,
-            encoding='utf-8',
-            check=True,
-            input=haskell_input,
-        )
-
-        haskell_output = proc.stdout.splitlines()
+        haskell_output = self._get_haskell_runner()(haskell_input).splitlines()
         check(len(haskell_output) == len(pending_queries) * 2, InternalError)
 
         lineno, querynum = 0, 0

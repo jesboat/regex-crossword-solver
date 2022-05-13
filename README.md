@@ -120,10 +120,25 @@ PuzzleResult(
 
 ## Usage
 
-First, install dependencies. The project uses both Python (3.10+ needed) and
-Haskell (GHC 8.10 is sufficient). The Python side uses `z3-solver` at runtime
-and Pyre as an optional typechecker; both can be installed with `./util.sh
-make_venv`. The Haskell side requires the `transformers` and `parsec` packages.
+First, install dependencies. The project uses both Python and Haskell:
+
+- Python 3.10 or newer is required. We require `z3-solver` at runtime and
+  Pyre as an optional typechecker. Running `./util.sh make_venv` will
+  install both of them in a venv.
+
+- The Haskell side can be built using [Stack](https://haskellstack.org/).
+
+    1. Running `stack build` will download/build GHC and the Haskell
+       dependencies fully automatically.
+
+    2. If you prefer to use the system's GHC (ignoring the version check),
+       point the `STACK_YAML` environment variable at `stack-sysghc.yaml`, e.g.
+       with `STACK_YAML="$PWD/stack-sysghc.yaml" stack build`. Set
+       `STACK_YAML` in the same way when running the solver.
+
+    3. Alternatively, if you don't have Stack available, the code will fall
+       back to using `runhaskell` on your `PATH`. You're responsible for
+       ensuring that dependencies are installed.
 
 Second, download the challenges file from
 `https://regexcrossword.com/data/challenges.json`

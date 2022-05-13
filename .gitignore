@@ -1,6 +1,7 @@
 /.pyre
 /venv
 /.ipynb_checkpoints
+/.stack-work
 __pycache__/
 *.hi
 *.o

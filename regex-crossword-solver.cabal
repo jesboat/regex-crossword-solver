@@ -1,0 +1,24 @@
+name:           regex-crossword-solver
+version:        0.0.0
+
+synopsis:       solve regexcrossword.com-style puzzles
+homepage:       https://github.com/jesboat/regex-crossword-solver
+author:         J Sailor
+license:        AllRightsReserved
+copyright:      Copyright (c) 2022, J Sailor. All rights reserved.
+stability:      alpha
+
+cabal-version: >= 1.8
+build-type:    Simple
+
+source-repository head
+    type:       git
+    location:   https://github.com/jesboat/regex-crossword-solver
+
+executable          regex-crossword-solver-tool
+    hs-source-dirs: src
+    main-is:        Regex.hs
+    ghc-options:    -main-is Regex
+    build-depends:  base
+                  , parsec
+                  , transformers
